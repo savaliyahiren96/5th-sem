@@ -1,0 +1,6 @@
+{
+  "name": "ClinicaAI – BPT 5th Semester Master Hub",
+  "description": "Comprehensive academic, clinical, and examination management ecosystem with 6 subject-wise AI agents for BPT 5th Semester at PIPTR, Parul University.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
