@@ -12,6 +12,7 @@ import { ClinicalPostingModule } from './components/ClinicalPostingModule';
 import { InternalAssessmentModule } from './components/InternalAssessmentModule';
 import { FacultyDashboard } from './components/FacultyDashboard';
 import { KnowledgeDatabaseView } from './components/KnowledgeDatabaseView';
+import { InteractiveAnimationPlayer } from './components/InteractiveAnimationPlayer';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<ActiveTab>('dashboard');
@@ -19,6 +20,7 @@ export default function App() {
   const [students, setStudents] = useState<StudentRecord[]>(INITIAL_STUDENTS);
   const [totalStudentsCount, setTotalStudentsCount] = useState<number>(102);
   const [selectedSubjectId, setSelectedSubjectId] = useState<SubjectId>('ortho');
+  const [selectedAnimationDemoId, setSelectedAnimationDemoId] = useState<string>('demo-acl-lachman');
   const [userRole, setUserRole] = useState<'student' | 'faculty'>('student');
 
   // Global search modal state
@@ -85,6 +87,21 @@ export default function App() {
             allSubjects={subjects}
             onSelectAnotherSubject={(id) => setSelectedSubjectId(id as SubjectId)}
             onOpenCrossSubjectSearch={(topic) => handleOpenSearchWithQuery(topic)}
+            onOpenAnimationDemo={(demoId) => {
+              setSelectedAnimationDemoId(demoId);
+              setActiveTab('animations');
+            }}
+          />
+        )}
+
+        {/* TAB 2.5: INTERACTIVE CLINICAL ANIMATIONS & MEDIA KITS */}
+        {activeTab === 'animations' && (
+          <InteractiveAnimationPlayer
+            initialDemoId={selectedAnimationDemoId}
+            onOpenSubjectAgent={(subId) => {
+              setSelectedSubjectId(subId);
+              setActiveTab('agents');
+            }}
           />
         )}
 

@@ -167,3 +167,34 @@ export interface KnowledgeDocument {
   downloadUrl?: string;
   summary: string;
 }
+
+export interface AnimationPhaseStep {
+  stepNumber: number;
+  phaseName: string;
+  durationSeconds: number;
+  therapistCue: string;
+  biomechanicalAction: string;
+  criticalSafetyWarning?: string;
+  visualHighlight: string;
+  jointAngleText?: string;
+}
+
+export interface ConditionAnimationDemo {
+  id: string;
+  conditionId: string;
+  title: string;
+  subjectId: SubjectId;
+  subjectName: string;
+  category: 'Special Test' | 'Manual Therapy' | 'Gait Deviation' | 'Mat Activity' | 'Chest Physiotherapy' | 'Surgical Post-Op Protocol' | 'Splinting & Biomechanics';
+  totalDurationSeconds: number;
+  keyAnatomicalStructures: string[];
+  clinicalSignificance: string;
+  phases: AnimationPhaseStep[];
+  materialKit: {
+    pocketCardSummary: string;
+    flowchartSteps: string[];
+    homeExerciseInstructions: string[];
+    vivaQuestions: { question: string; answer: string }[];
+    examMarkingPoints: string[];
+  };
+}

@@ -19,6 +19,7 @@ import {
   Sliders,
   Send,
   Loader2,
+  Activity,
 } from 'lucide-react';
 
 interface SubjectAgentViewProps {
@@ -26,6 +27,7 @@ interface SubjectAgentViewProps {
   allSubjects: SubjectConfig[];
   onSelectAnotherSubject: (id: any) => void;
   onOpenCrossSubjectSearch: (q: string) => void;
+  onOpenAnimationDemo?: (demoId: string) => void;
 }
 
 type AgentSubMode =
@@ -41,6 +43,7 @@ export const SubjectAgentView: React.FC<SubjectAgentViewProps> = ({
   allSubjects,
   onSelectAnotherSubject,
   onOpenCrossSubjectSearch,
+  onOpenAnimationDemo,
 }) => {
   const [activeMode, setActiveMode] = useState<AgentSubMode>('teach');
 
@@ -351,6 +354,18 @@ export const SubjectAgentView: React.FC<SubjectAgentViewProps> = ({
             <HelpCircle className="w-3.5 h-3.5" />
             <span>Curriculum & Unit Browser</span>
           </button>
+
+          {/* Animated Video & Material Kit shortcut */}
+          {onOpenAnimationDemo && (
+            <button
+              onClick={() => onOpenAnimationDemo('demo-acl-lachman')}
+              className="px-3 py-1.5 text-xs font-semibold rounded-lg bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-200 transition-colors flex items-center gap-1.5"
+              title="Launch animated biomechanical video simulation and material kit"
+            >
+              <Activity className="w-3.5 h-3.5 text-amber-600" />
+              <span>Animated Biomechanics & Material Kit</span>
+            </button>
+          )}
 
           {/* Cross-subject shortcut */}
           <button

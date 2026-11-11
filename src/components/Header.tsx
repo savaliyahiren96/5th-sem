@@ -5,6 +5,7 @@ import { Search, GraduationCap, BookOpen, Calendar, Stethoscope, Award, Users } 
 export type ActiveTab =
   | 'dashboard'
   | 'agents'
+  | 'animations'
   | 'syllabus'
   | 'calendar'
   | 'clinical'
@@ -74,6 +75,17 @@ export const Header: React.FC<HeaderProps> = ({
               }`}
             >
               6 Subject AI Agents
+            </button>
+
+            <button
+              onClick={() => setActiveTab('animations')}
+              className={`hover:text-teal-700 transition-colors whitespace-nowrap shrink-0 py-1 border-b-2 flex items-center gap-1.5 ${
+                activeTab === 'animations'
+                  ? 'border-teal-700 text-teal-800 font-semibold'
+                  : 'border-transparent'
+              }`}
+            >
+              <span>Clinical Animations & Kits</span>
             </button>
 
             <button
@@ -179,6 +191,12 @@ export const Header: React.FC<HeaderProps> = ({
           className={`whitespace-nowrap ${activeTab === 'agents' ? 'text-teal-700 font-semibold' : ''}`}
         >
           6 AI Agents
+        </button>
+        <button
+          onClick={() => setActiveTab('animations')}
+          className={`whitespace-nowrap ${activeTab === 'animations' ? 'text-teal-700 font-semibold' : ''}`}
+        >
+          Animations & Kits
         </button>
         <button
           onClick={() => setActiveTab('syllabus')}
